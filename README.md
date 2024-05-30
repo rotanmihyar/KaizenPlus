@@ -1,5 +1,6 @@
 # HappyWarehouse
 
+
 ## Introduction
 
 Welcome to HappyWarehouse! This is a web application built on ASP.NET Core .NET 6 for the backend, utilizing Blazor .NET 6 for the frontend. The application is designed to manage warehouse operations efficiently.
@@ -54,6 +55,20 @@ Provide instructions or examples for using your project.
 - **Authentication**:Only authorized users can login to the system
 - **Warehouse Management**:Users can add warehouse to the system
 - **Users Management**: Add edit or delete users.
+ ## Pages
+### Login Page
+![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/e0759c85-db03-42cf-a54b-7444c367b461)
+
+### WareHouse Page
+![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/162e3fac-82d0-4bce-b733-21c2332782d7)
+
+### WareHouse Items Page
+![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/38554a8f-5197-419b-b27c-6512cc81ce45)
+
+### User Page
+![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/0819e3ea-cde8-4520-a440-5b2fa67ce000)
+
+
 
 ## Contributing
 
