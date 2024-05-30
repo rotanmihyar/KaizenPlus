@@ -46,9 +46,6 @@ Ensure you have the following installed on your machine:
 - **Username**: admin@happywarehouse.com
 - **Password**: P@ssw0rd
 
-## Usage
-
-Provide instructions or examples for using your project.
 
 ## Features
 
