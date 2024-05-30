@@ -68,7 +68,8 @@ Provide instructions or examples for using your project.
 ### User Page
 ![image](https://github.com/rotanmihyar/KaizenPlus/blob/master/Screenshots/users.png)
 
-
+### Swagger
+![image](https://github.com/rotanmihyar/KaizenPlus/blob/master/Screenshots/swagger.png)
 
 
 ## Contributing
