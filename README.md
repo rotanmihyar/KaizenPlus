@@ -24,11 +24,11 @@ Ensure you have the following installed on your machine:
 
 1. Clone this repository to your local machine.
     ```bash
-    git clone https://github.com/{yourUserName}/KaizenPlus.git
+    git clone https://github.com/rotanmihyar/KaizenPlus.git
     ```
 2. Navigate to the project directory.
     ```bash
-    cd projectname
+    cd KaizenPlus
     ```
 3. Build and run the application.
     ```bash
@@ -51,18 +51,12 @@ Provide instructions or examples for using your project.
 
 ## Features
 
-- **Feature 1**: Description of feature 1.
-- **Feature 2**: Description of feature 2.
-- **Feature 3**: Description of feature 3.
+- **Authentication**:Only authorized users can login to the system
+- **Warehouse Management**:Users can add warehouse to the system
+- **Users Management**: Add edit or delete users.
 
 ## Contributing
 
 Contributions are welcome! If you find any bugs or want to suggest improvements, feel free to open an issue or submit a pull request.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-Mention any individuals, organizations, or resources that you want to acknowledge.
