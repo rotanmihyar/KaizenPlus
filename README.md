@@ -57,17 +57,16 @@ Provide instructions or examples for using your project.
 - **Users Management**: Add edit or delete users.
  ## Pages
 ### Login Page
-![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/e0759c85-db03-42cf-a54b-7444c367b461)
+![image](https://github.com/rotanmihyar/KaizenPlus/blob/master/Screenshots/login.png)
 
 ### WareHouse Page
-![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/162e3fac-82d0-4bce-b733-21c2332782d7)
+![image](https://github.com/rotanmihyar/KaizenPlus/blob/master/Screenshots/Warehouse.png)
 
 ### WareHouse Items Page
-![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/38554a8f-5197-419b-b27c-6512cc81ce45)
+![image](https://github.com/rotanmihyar/KaizenPlus/blob/master/Screenshots/Warehouse%20items.png)
 
 ### User Page
-![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/fc111f22-eb0b-4d10-9e65-0f8019472fb3)
-![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/fc111f22-eb0b-4d10-9e65-0f8019472fb3)
+![image](https://github.com/rotanmihyar/KaizenPlus/blob/master/Screenshots/users.png)
 
 
 
