@@ -1,0 +1,88 @@
+﻿@page "/login"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject ILocalStorageService localStorage
+@using BlazorApplication.Models
+@using Blazored.LocalStorage
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@inject IConfiguration configuration
+@inject MyAuthenticationStateProvider AuthenticationStateProvider
+@attribute [AllowAnonymous]
+<EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <InputText id="username" @bind-Value="loginModel.Username" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="loginModel.Password" type="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
+</EditForm>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string errorMessage;
+    private string API = "";
+    protected override void OnInitialized()
+    { API = configuration.GetSection("APIURI").Get<string>()!; }
+    /// <summary>
+    /// Handles the login process.
+    /// </summary>
+    private async Task HandleLogin()
+    {
+        errorMessage = null;
+
+        var requestContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Username", loginModel.Username),
+            new KeyValuePair<string, string>("Password", loginModel.Password)
+    });
+
+        try
+        {
+            var response = await Http.PostAsync(API + "Account/authenticate", requestContent);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<LoginRoot>();
+                var token = result.data.token;
+
+                await localStorage.SetItemAsync("user", result);
+                Console.WriteLine(token);
+
+                await AuthenticationStateProvider.MarkUserAsAuthenticated();
+                // Redirect to the home page or another protected page
+                Navigation.NavigateTo("/");
+            }
+            else
+            {
+                errorMessage = "Invalid login attempt.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+            Console.WriteLine($"Error: {ex}");
+        }
+    }
+
+    private class LoginModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
+    private class TokenResponse
+    {
+        public string Token { get; set; }
+    }
+}

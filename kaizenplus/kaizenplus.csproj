@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>872b7da8-b084-4903-876f-b54ba5b01d3e</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <OutputType>WinExe</OutputType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ApplicationIcon />
+    <StartupObject>kaizenplus.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\**" />
+    <Content Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201024132318_RouteTable.cs" />
+    <Compile Remove="Migrations\20201024132318_RouteTable.Designer.cs" />
+    <Compile Remove="Migrations\20201026204534_BusinessTablesAndAmenities.cs" />
+    <Compile Remove="Migrations\20201026204534_BusinessTablesAndAmenities.Designer.cs" />
+    <Compile Remove="Migrations\20201027203048_BusinessRequestTables.cs" />
+    <Compile Remove="Migrations\20201027203048_BusinessRequestTables.Designer.cs" />
+    <Compile Remove="Migrations\20201029005200_InvestmentTable.cs" />
+    <Compile Remove="Migrations\20201029005200_InvestmentTable.Designer.cs" />
+    <Compile Remove="Migrations\20201101204410_BusinessInfoUpdated.cs" />
+    <Compile Remove="Migrations\20201101204410_BusinessInfoUpdated.Designer.cs" />
+    <Compile Remove="Migrations\20201103164305_HugeMigration.cs" />
+    <Compile Remove="Migrations\20201103164305_HugeMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201103164843_HugeMigration.cs" />
+    <Compile Remove="Migrations\20201103164843_HugeMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201103165108_HugeMigration.cs" />
+    <Compile Remove="Migrations\20201103165108_HugeMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201103165201_HugeMigration.cs" />
+    <Compile Remove="Migrations\20201103165201_HugeMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201103165317_HugeMigration.cs" />
+    <Compile Remove="Migrations\20201103165317_HugeMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201221185638_InvestmentOptionalFieldsAdded.cs" />
+    <Compile Remove="Migrations\20201221185638_InvestmentOptionalFieldsAdded.Designer.cs" />
+    <Compile Remove="Migrations\20201221191412_test.cs" />
+    <Compile Remove="Migrations\20201221191412_test.Designer.cs" />
+    <Compile Remove="Migrations\20210201235540_UserBookingRelationAdded.cs" />
+    <Compile Remove="Migrations\20210201235540_UserBookingRelationAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210216223901_TryOut.cs" />
+    <Compile Remove="Migrations\20210216223901_TryOut.Designer.cs" />
+    <Compile Remove="Migrations\20210222185701_TestMig.cs" />
+    <Compile Remove="Migrations\20210222185701_TestMig.Designer.cs" />
+    <Compile Remove="Migrations\20210222185751_TransactionBookingRelationAdded.cs" />
+    <Compile Remove="Migrations\20210222185751_TransactionBookingRelationAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210227131349_FlyUsTransactionCutColumn.cs" />
+    <Compile Remove="Migrations\20210227131349_FlyUsTransactionCutColumn.Designer.cs" />
+    <Compile Remove="Migrations\20210324211954_PromoCodeTableAdded.cs" />
+    <Compile Remove="Migrations\20210324211954_PromoCodeTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20211012232256_addChatChannel.cs" />
+    <Compile Remove="Migrations\20211012232256_addChatChannel.Designer.cs" />
+    <Compile Remove="Migrations\20211026112620_test3.cs" />
+    <Compile Remove="Migrations\20211026112620_test3.Designer.cs" />
+    <Compile Remove="Migrations\20220109232117_key.cs" />
+    <Compile Remove="Migrations\20220109232117_key.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="CacheManager.Core" Version="1.2.0" />
+    <PackageReference Include="CacheManager.Microsoft.Extensions.Caching.Memory" Version="1.2.0" />
+    <PackageReference Include="CacheManager.Serialization.Json" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.14" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly" Version="8.4.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Resources\General\General.ar.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\General\General.en.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,65 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = BlazorApplication
+build_property.RootNamespace = BlazorApplication
+build_property.ProjectDir = D:\kaizenplus\backend\BlazorApplication\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\kaizenplus\backend\BlazorApplication
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/kaizenplus/backend/BlazorApplication/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Login/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = TG9naW5cTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Pages/LogViewer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nVmlld2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Pages/UserManagement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlck1hbmFnZW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Pages/WareHouse.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2FyZUhvdXNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Pages/WareHouseItems.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2FyZUhvdXNlSXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Shared/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/kaizenplus/backend/BlazorApplication/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-yq70x9dt5e
+
+[D:/kaizenplus/backend/BlazorApplication/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pahgify441

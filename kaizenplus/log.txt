@@ -1,0 +1,342 @@
+2024-05-29 16:42:45.965 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:42:46.111 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-05-29 16:42:46.123 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-05-29 16:42:46.140 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-05-29 16:42:46.162 +03:00 [INF] No migrations were applied. The database is already up to date.
+2024-05-29 16:42:47.295 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 401.7561 ms
+2024-05-29 16:47:26.759 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:26.777 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:27.018 +03:00 [WRN] Failed to determine the https port for redirect.
+2024-05-29 16:47:27.032 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:47:27.057 +03:00 [INF] Route matched with {action = "Get", controller = "WarehouseItems"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput]] Get(kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemSearch) on controller kaizenplus.Controllers.WarehouseItemsController (kaizenplus).
+2024-05-29 16:47:27.100 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:47:27.675 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w"."Id", "w"."CostPrice", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."MSRPPrice", "w"."Name", "w"."Quantity", "w"."SKU", "w"."UpdatedById", "w"."UpdatedDate", "w"."WarehouseId", "w0"."Id", "w0"."Address", "w0"."City", "w0"."CountryId", "w0"."CreatedById", "w0"."CreatedDate", "w0"."DeletedById", "w0"."DeletionDate", "w0"."IsDeleted", "w0"."Name", "w0"."UpdatedById", "w0"."UpdatedDate"
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+ORDER BY "w"."Quantity" DESC
+LIMIT @__p_2 OFFSET @__p_1
+2024-05-29 16:47:27.810 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+2024-05-29 16:47:27.835 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:47:27.927 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus) in 859.6644ms
+2024-05-29 16:47:27.928 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:47:27.929 +03:00 [INF] HTTP POST /api/WarehouseItems/search responded 200 in 913.0252 ms
+2024-05-29 16:47:27.986 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:27.989 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:27.989 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:47:27.993 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:47:28.035 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:47:28.110 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:47:28.121 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:47:28.122 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:47:28.128 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 134.584ms
+2024-05-29 16:47:28.128 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:47:28.128 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 138.3304 ms
+2024-05-29 16:47:41.113 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:47:41.261 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-05-29 16:47:41.276 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-05-29 16:47:41.295 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-05-29 16:47:41.321 +03:00 [INF] No migrations were applied. The database is already up to date.
+2024-05-29 16:47:41.594 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:41.638 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:42.048 +03:00 [WRN] Failed to determine the https port for redirect.
+2024-05-29 16:47:42.061 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:47:42.107 +03:00 [INF] Route matched with {action = "Get", controller = "WarehouseItems"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput]] Get(kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemSearch) on controller kaizenplus.Controllers.WarehouseItemsController (kaizenplus).
+2024-05-29 16:47:42.124 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:47:42.439 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 426.8564 ms
+2024-05-29 16:47:43.020 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w"."Id", "w"."CostPrice", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."MSRPPrice", "w"."Name", "w"."Quantity", "w"."SKU", "w"."UpdatedById", "w"."UpdatedDate", "w"."WarehouseId", "w0"."Id", "w0"."Address", "w0"."City", "w0"."CountryId", "w0"."CreatedById", "w0"."CreatedDate", "w0"."DeletedById", "w0"."DeletionDate", "w0"."IsDeleted", "w0"."Name", "w0"."UpdatedById", "w0"."UpdatedDate"
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+ORDER BY "w"."Quantity" DESC
+LIMIT @__p_2 OFFSET @__p_1
+2024-05-29 16:47:43.235 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+2024-05-29 16:47:43.269 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:47:43.404 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus) in 1289.1114ms
+2024-05-29 16:47:43.405 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:47:43.406 +03:00 [INF] HTTP POST /api/WarehouseItems/search responded 200 in 1360.0961 ms
+2024-05-29 16:47:43.458 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:43.464 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:47:43.464 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:47:43.466 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:47:43.527 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:47:43.628 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:47:43.642 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:47:43.643 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:47:43.648 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 182.2998ms
+2024-05-29 16:47:43.648 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:47:43.648 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 183.9786 ms
+2024-05-29 16:48:07.986 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:07.997 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:07.997 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:48:07.998 +03:00 [INF] Route matched with {action = "Get", controller = "WarehouseItems"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput]] Get(kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemSearch) on controller kaizenplus.Controllers.WarehouseItemsController (kaizenplus).
+2024-05-29 16:48:07.998 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:48:08.004 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w"."Id", "w"."CostPrice", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."MSRPPrice", "w"."Name", "w"."Quantity", "w"."SKU", "w"."UpdatedById", "w"."UpdatedDate", "w"."WarehouseId", "w0"."Id", "w0"."Address", "w0"."City", "w0"."CountryId", "w0"."CreatedById", "w0"."CreatedDate", "w0"."DeletedById", "w0"."DeletionDate", "w0"."IsDeleted", "w0"."Name", "w0"."UpdatedById", "w0"."UpdatedDate"
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+ORDER BY "w"."Quantity" DESC
+LIMIT @__p_2 OFFSET @__p_1
+2024-05-29 16:48:08.005 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+2024-05-29 16:48:08.006 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:48:08.006 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus) in 8.3562ms
+2024-05-29 16:48:08.006 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:48:08.006 +03:00 [INF] HTTP POST /api/WarehouseItems/search responded 200 in 8.6181 ms
+2024-05-29 16:48:08.070 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:08.073 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:08.074 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:48:08.074 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:48:08.074 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:48:08.075 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:48:08.076 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:48:08.076 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:48:08.076 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 2.3538ms
+2024-05-29 16:48:08.076 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:48:08.076 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 2.5720 ms
+2024-05-29 16:48:39.002 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:39.011 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:39.012 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:48:39.012 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:48:39.017 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:48:39.022 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:48:39.024 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:48:39.024 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:48:39.024 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 12.0055ms
+2024-05-29 16:48:39.024 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:48:39.024 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 12.3065 ms
+2024-05-29 16:48:43.741 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:48:43.742 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:48:43.742 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:48:43.742 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:48:43.744 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:48:43.746 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:48:43.746 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:48:43.747 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 4.8325ms
+2024-05-29 16:48:43.747 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:48:43.747 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 5.1224 ms
+2024-05-29 16:52:31.287 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:31.297 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:31.297 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:52:31.297 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:52:31.298 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:52:31.301 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:52:31.303 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:52:31.303 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:52:31.303 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 5.4003ms
+2024-05-29 16:52:31.303 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:52:31.303 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 5.6759 ms
+2024-05-29 16:52:32.483 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:32.486 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:32.486 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:52:32.487 +03:00 [INF] Route matched with {action = "Get", controller = "WarehouseItems"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput]] Get(kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemSearch) on controller kaizenplus.Controllers.WarehouseItemsController (kaizenplus).
+2024-05-29 16:52:32.488 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:52:32.489 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w"."Id", "w"."CostPrice", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."MSRPPrice", "w"."Name", "w"."Quantity", "w"."SKU", "w"."UpdatedById", "w"."UpdatedDate", "w"."WarehouseId", "w0"."Id", "w0"."Address", "w0"."City", "w0"."CountryId", "w0"."CreatedById", "w0"."CreatedDate", "w0"."DeletedById", "w0"."DeletionDate", "w0"."IsDeleted", "w0"."Name", "w0"."UpdatedById", "w0"."UpdatedDate"
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+ORDER BY "w"."Quantity" DESC
+LIMIT @__p_2 OFFSET @__p_1
+2024-05-29 16:52:32.490 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "WarehouseItem" AS "w"
+INNER JOIN "Warehouses" AS "w0" ON "w"."WarehouseId" = "w0"."Id"
+WHERE (NOT ("w"."IsDeleted") AND NOT ("w0"."IsDeleted")) AND (((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."SKU", @__search_Search_0) > 0)))
+2024-05-29 16:52:32.490 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseItemServices.Models.WarehouseItemsOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:52:32.490 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus) in 3.1385ms
+2024-05-29 16:52:32.490 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseItemsController.Get (kaizenplus)'
+2024-05-29 16:52:32.490 +03:00 [INF] HTTP POST /api/WarehouseItems/search responded 200 in 3.3768 ms
+2024-05-29 16:52:32.574 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:32.574 +03:00 [INF] Executing endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:52:32.574 +03:00 [INF] Route matched with {action = "Get", controller = "Warehouse"}. Executing controller action with signature kaizenplus.Models.BaseResponse`1[kaizenplus.Models.PageOutput`1[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput]] Get(kaizenplus.Services.WarehouseServices.Models.WarehouseSearch) on controller kaizenplus.Controllers.WarehouseController (kaizenplus).
+2024-05-29 16:52:32.575 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:52:32.576 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__search_Search_0='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Address", "t"."City", "t"."CountryId", "t"."CreatedById", "t"."CreatedDate", "t"."DeletedById", "t"."DeletionDate", "t"."IsDeleted", "t"."Name", "t"."UpdatedById", "t"."UpdatedDate", "c"."Id", "c"."Name", "w1"."Id", "w1"."CostPrice", "w1"."CreatedById", "w1"."CreatedDate", "w1"."DeletedById", "w1"."DeletionDate", "w1"."IsDeleted", "w1"."MSRPPrice", "w1"."Name", "w1"."Quantity", "w1"."SKU", "w1"."UpdatedById", "w1"."UpdatedDate", "w1"."WarehouseId"
+FROM (
+    SELECT "w"."Id", "w"."Address", "w"."City", "w"."CountryId", "w"."CreatedById", "w"."CreatedDate", "w"."DeletedById", "w"."DeletionDate", "w"."IsDeleted", "w"."Name", "w"."UpdatedById", "w"."UpdatedDate", (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") AS "c"
+    FROM "Warehouses" AS "w"
+    WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+    ORDER BY (
+        SELECT COUNT(*)
+        FROM "WarehouseItem" AS "w0"
+        WHERE "w"."Id" = "w0"."WarehouseId") DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+INNER JOIN "Country" AS "c" ON "t"."CountryId" = "c"."Id"
+LEFT JOIN "WarehouseItem" AS "w1" ON "t"."Id" = "w1"."WarehouseId"
+ORDER BY "t"."c" DESC, "t"."Id", "c"."Id"
+2024-05-29 16:52:32.579 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__search_Search_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Warehouses" AS "w"
+WHERE NOT ("w"."IsDeleted") AND ((((@__search_Search_0 = '') OR (instr("w"."Name", @__search_Search_0) > 0)) OR ((@__search_Search_0 = '') OR (instr("w"."Address", @__search_Search_0) > 0))) OR ((@__search_Search_0 = '') OR (instr("w"."City", @__search_Search_0) > 0)))
+2024-05-29 16:52:32.579 +03:00 [INF] Executing ObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[kaizenplus.Models.PageOutput`1[[kaizenplus.Services.WarehouseServices.Models.WarehouseOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-29 16:52:32.579 +03:00 [INF] Executed action kaizenplus.Controllers.WarehouseController.Get (kaizenplus) in 4.8954ms
+2024-05-29 16:52:32.579 +03:00 [INF] Executed endpoint 'kaizenplus.Controllers.WarehouseController.Get (kaizenplus)'
+2024-05-29 16:52:32.579 +03:00 [INF] HTTP POST /api/Warehouse/search responded 200 in 5.2164 ms
+2024-05-29 16:52:33.446 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:33.454 +03:00 [INF] CORS policy execution successful.
+2024-05-29 16:52:33.455 +03:00 [INF] Executing endpoint 'Coachyou.Controllers.AccountController.GetUsers (kaizenplus)'
+2024-05-29 16:52:33.457 +03:00 [INF] Route matched with {action = "GetUsers", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[kaizenplus.Models.BaseResponse`1[System.Collections.Generic.List`1[Coachyou.Services.Users.Models.UserOutput]]] GetUsers() on controller Coachyou.Controllers.AccountController (kaizenplus).
+2024-05-29 16:52:33.458 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-29 16:52:33.500 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Active", "u"."CreatedDate", "u"."DateOfBirth", "u"."Email", "u"."FirstName", "u"."IsVerified", "u"."LastLoginDate", "u"."LastName", "u"."PasswordHash", "u"."PasswordSalt", "u"."PhoneNumber", "u"."Picture", "u"."RefreshToken", "u"."RefreshTokenValidUntil", "u"."Username", "t"."UserId", "t"."RoleId", "t"."Id", "t"."Name"
+FROM "Users" AS "u"
+LEFT JOIN (
+    SELECT "u0"."UserId", "u0"."RoleId", "r"."Id", "r"."Name"
+    FROM "UserRoles" AS "u0"
+    INNER JOIN "Roles" AS "r" ON "u0"."RoleId" = "r"."Id"
+) AS "t" ON "u"."Id" = "t"."UserId"
+WHERE ("u"."Id" <> @__userId_0) AND "u"."Active"
+ORDER BY "u"."Id", "t"."UserId", "t"."RoleId"
+2024-05-29 16:52:33.564 +03:00 [INF] Executing OkObjectResult, writing value of type 'kaizenplus.Models.BaseResponse`1[[System.Collections.Generic.List`1[[Coachyou.Services.Users.Models.UserOutput, kaizenplus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-05-29 16:52:33.593 +03:00 [INF] Executed action Coachyou.Controllers.AccountController.GetUsers (kaizenplus) in 135.9639ms
+2024-05-29 16:52:33.593 +03:00 [INF] Executed endpoint 'Coachyou.Controllers.AccountController.GetUsers (kaizenplus)'
+2024-05-29 16:52:33.593 +03:00 [INF] HTTP GET /api/Account/GetUsers responded 200 in 138.4140 ms

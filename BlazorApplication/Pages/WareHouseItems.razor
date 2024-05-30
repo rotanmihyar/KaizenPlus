@@ -1,0 +1,269 @@
+﻿@page "/warehouseitems"
+@using BlazorApplication.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@using Blazored.LocalStorage
+@using System.Net.Http.Headers
+@using static BlazorApplication.Pages.WareHouse
+@inject ILocalStorageService localStorage
+@inject HttpClient Http
+@inject IConfiguration configuration
+@attribute [Authorize]
+<PageTitle>Warehouse Items</PageTitle>
+
+<h1>Warehouse Items</h1>
+
+@if (WarehouseItemsList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <input type="text" class="form-control mb-3" @onchange="SearchChanged" placeholder="Search" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Quantity</th>
+                <th>Cost Price</th>
+                <th>MSRP Price</th>
+                <th>Warehouse Name</th>
+                <th></th> <!-- Add column for delete button -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in WarehouseItemsList.data.data)
+            {
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.sku</td>
+                    <td>@item.quantity</td>
+                    <td>@item.costPrice</td>
+                    <td>@item.msrpPrice</td>
+                    <td>@item.warehouseName</td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteWarehouseItem(item.id)">Delete</button> <!-- Delete button -->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Add button for inserting new data -->
+    <button class="btn btn-primary mb-3" @onclick="ShowInsertPopup">Add Warehouse Item</button>
+
+    <!-- Insert popup -->
+    @if (showInsertPopup)
+    {
+        <div class="p-3 mb-3 border rounded">
+            <h2>Add Warehouse Item</h2>
+            <input type="text" class="form-control mb-2" @bind="newWarehouseItem.name" placeholder="Name" /><br />
+            <input type="text" class="form-control mb-2" @bind="newWarehouseItem.sku" placeholder="SKU" /><br />
+            <input type="number" class="form-control mb-2" @bind="newWarehouseItem.quantity" placeholder="Quantity" /><br />
+            <input type="number" class="form-control mb-2" @bind="newWarehouseItem.costPrice" placeholder="Cost Price" /><br />
+            <input type="number" class="form-control mb-2" @bind="newWarehouseItem.msrpPrice" placeholder="MSRP Price" /><br />
+            <!-- Dropdown list for selecting warehouse -->
+            <select class="form-control mb-2" @bind="newWarehouseItem.warehouseId">
+                @foreach (var warehouse in WarehousesList.data.data)
+                {
+                    <option value="@warehouse.id">@warehouse.name</option>
+                }
+            </select><br />
+            <button class="btn btn-success" @onclick="InsertWarehouseItem">Save</button>
+        </div>
+    }
+
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary" @onclick="PreviousPage" disabled="@(!HasPreviousPage)">Previous</button>
+        <button class="btn btn-secondary" @onclick="NextPage" disabled="@(!HasNextPage)">Next</button>
+    </div>
+}
+
+@code {
+    private WarehouseItems WarehouseItemsList;
+    private Warehouses WarehousesList;
+    private int currentPage = 1;
+    private bool showInsertPopup = false;
+    private WarehouseItemData newWarehouseItem = new WarehouseItemData(); // New warehouse item object for inserting
+    private int totalPages;
+    private string API = "";
+    /// <summary>
+    /// Initializes the component and loads the initial data.
+    /// </summary>
+
+    protected override async Task OnInitializedAsync()
+    {
+        API = configuration.GetSection("APIURI").Get<string>()!;
+        await GetData("");
+        await GetWarehouses(); // Get warehouses for dropdown list
+    }
+
+    /// <summary>
+    /// Handles the search input change event and fetches the filtered data.
+    /// </summary>
+    /// <param name="e">Change event arguments.</param>
+    private async Task SearchChanged(ChangeEventArgs e)
+    {
+        currentPage = 1; // Reset to first page when performing a new search
+        await GetData(e.Value.ToString());
+    }
+
+    /// <summary>
+    /// Fetches the warehouse items data based on the search string and current page.
+    /// </summary>
+    /// <param name="search">Search string.</param>
+    private async Task GetData(string search)
+    {
+        var requestContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Search", search),
+            new KeyValuePair<string, string>("PageSize", "10"),
+            new KeyValuePair<string, string>("PageNumber", currentPage.ToString())
+    });
+
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var response = await Http.PostAsync(API+"WarehouseItems/search", requestContent);
+        if (response.IsSuccessStatusCode)
+        {
+            WarehouseItemsList = await response.Content.ReadFromJsonAsync<WarehouseItems>();
+            totalPages = (int)Math.Ceiling((double)WarehouseItemsList.data.totalRows / 10);
+            StateHasChanged();
+        }
+    }
+
+    /// <summary>
+    /// Displays the popup for inserting a new warehouse item.
+    /// </summary>
+    private void ShowInsertPopup()
+    {
+        showInsertPopup = true;
+    }
+
+    /// <summary>
+    /// Fetches the list of warehouses for the dropdown list.
+    /// </summary>
+    private async Task GetWarehouses()
+    {
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var requestContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Search", ""),
+            new KeyValuePair<string, string>("PageSize", "999999"),
+            new KeyValuePair<string, string>("PageNumber", "1")
+    });
+
+        var response = await Http.PostAsync("http://localhost:5000/api/Warehouse/search", requestContent);
+        if (response.IsSuccessStatusCode)
+        {
+            WarehousesList = await response.Content.ReadFromJsonAsync<Warehouses>();
+        }
+    }
+
+    /// <summary>
+    /// Deletes a warehouse item by its ID.
+    /// </summary>
+    /// <param name="id">Warehouse item ID.</param>
+    private async Task DeleteWarehouseItem(int id)
+    {
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var response = await Http.DeleteAsync(API + $"WarehouseItems/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await GetData(""); // Refresh data after deletion
+        }
+    }
+
+    /// <summary>
+    /// Inserts a new warehouse item into the system.
+    /// </summary>
+    private async Task InsertWarehouseItem()
+    {
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var requestContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Name", newWarehouseItem.name),
+            new KeyValuePair<string, string>("SKU", newWarehouseItem.sku),
+            new KeyValuePair<string, string>("Quantity", newWarehouseItem.quantity.ToString()),
+            new KeyValuePair<string, string>("CostPrice", newWarehouseItem.costPrice.ToString()),
+            new KeyValuePair<string, string>("MSRPPrice", newWarehouseItem.msrpPrice.ToString()),
+            new KeyValuePair<string, string>("WarehouseId", newWarehouseItem.warehouseId.ToString())
+    });
+
+        var response = await Http.PostAsync("http://localhost:5000/api/WarehouseItems", requestContent);
+        if (response.IsSuccessStatusCode)
+        {
+            newWarehouseItem = new WarehouseItemData(); // Clear the new warehouse item object
+            showInsertPopup = false; // Close the popup
+            await GetData(""); // Refresh data after insertion
+        }
+    }
+
+    /// <summary>
+    /// Navigates to the previous page and fetches the data.
+    /// </summary>
+    private async void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            await GetData("");
+        }
+    }
+
+    /// <summary>
+    /// Navigates to the next page and fetches the data.
+    /// </summary>
+    private async void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            await GetData("");
+        }
+    }
+
+    /// <summary>
+    /// Indicates if there is a previous page available.
+    /// </summary>
+    private bool HasPreviousPage => currentPage > 1;
+
+    /// <summary>
+    /// Indicates if there is a next page available.
+    /// </summary>
+    private bool HasNextPage => currentPage < totalPages;
+
+    public class WarehouseItemData
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string sku { get; set; }
+        public int quantity { get; set; }
+        public double costPrice { get; set; }
+        public double msrpPrice { get; set; }
+        public int warehouseId { get; set; }
+        public string warehouseName { get; set; }
+    }
+
+    public class WarehouseItemRows
+    {
+        public IList<WarehouseItemData> data { get; set; }
+        public int totalRows { get; set; }
+    }
+
+    public class WarehouseItems
+    {
+        public int errorCode { get; set; }
+        public string errorMessage { get; set; }
+        public bool success { get; set; }
+        public WarehouseItemRows data { get; set; }
+    }
+}

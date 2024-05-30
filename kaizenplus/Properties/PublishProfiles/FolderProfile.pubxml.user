@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Releases\MiniBursaAPI</_PublishTargetUrl>
+    <History>True|2021-12-25T17:11:54.0170783Z;True|2021-12-25T19:09:14.1304093+02:00;True|2021-12-25T19:07:23.9499448+02:00;True|2021-12-24T16:32:26.2548141+02:00;True|2021-12-24T02:29:23.0765595+02:00;True|2021-12-24T00:56:49.0564535+02:00;True|2021-12-24T00:51:18.7601670+02:00;True|2021-12-23T22:15:15.1915674+02:00;True|2021-12-23T21:36:14.6949107+02:00;True|2021-12-23T00:05:53.3598721+02:00;</History>
+  </PropertyGroup>
+</Project>

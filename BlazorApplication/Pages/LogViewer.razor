@@ -1,0 +1,24 @@
+﻿@page "/logviewer"
+
+<h1>Log Viewer</h1>
+
+<div>
+    <pre>@LogContent</pre>
+</div>
+
+@code {
+    private string LogContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            var logFilePath = Path.Combine("wwwroot", "log.txt");
+            LogContent = File.ReadAllText("log.txt");
+        }
+        catch (Exception ex)
+        {
+            LogContent = $"Error reading log file: {ex.Message}";
+        }
+    }
+}

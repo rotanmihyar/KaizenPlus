@@ -1,0 +1,245 @@
+﻿@page "/WareHouse"
+@using BlazorApplication.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@using Blazored.LocalStorage
+@using System.Net.Http.Headers
+@inject ILocalStorageService localStorage
+@inject HttpClient Http
+@inject IConfiguration configuration
+@attribute [Authorize]
+<PageTitle>Warehouse Items</PageTitle>
+
+<h1>Warehouse Items</h1>
+
+@if (WarehousesList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <input type="text" class="form-control mb-3" @onchange="SearchChanged" placeholder="Search" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Warehouse Items Count</th>
+                <th></th> <!-- Add column for delete button -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var warehouse in WarehousesList.data.data)
+            {
+                <tr>
+                    <td>@warehouse.name</td>
+                    <td>@warehouse.address</td>
+                    <td>@warehouse.city</td>
+                    <td>@warehouse.countryName</td>
+                    <td>@warehouse.warehouseItemsCount</td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteWarehouse(warehouse.id)">Delete</button> <!-- Delete button -->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary mb-3" @onclick="ShowInsertPopup">Add Warehouse</button>
+
+    @if (showInsertPopup)
+    {
+        <div class="p-3 mb-3 border rounded">
+            <h2>Add Warehouse</h2>
+            <input type="text" class="form-control mb-2" @bind="newWarehouse.name" placeholder="Name" /><br />
+            <input type="text" class="form-control mb-2" @bind="newWarehouse.address" placeholder="Address" /><br />
+            <input type="text" class="form-control mb-2" @bind="newWarehouse.city" placeholder="City" /><br />
+            <select class="form-control mb-2" @bind="newWarehouse.countryId">
+                <option value="1">Jordan</option>
+                <option value="2">Germany</option>
+            </select><br />
+            <button class="btn btn-success" @onclick="InsertWarehouse">Save</button>
+        </div>
+    }
+
+    <div>
+        <button class="btn btn-secondary" @onclick="PreviousPage" disabled="@(!HasPreviousPage)">Previous</button>
+        <button class="btn btn-secondary" @onclick="NextPage" disabled="@(!HasNextPage)">Next</button>
+    </div>
+}
+
+@code {
+    private Warehouses WarehousesList;
+    private int currentPage = 1;
+    private bool showInsertPopup = false;
+    private Warehouse newWarehouse = new Warehouse(); // New warehouse object for inserting
+    private int totalPages;
+    private string API = "";
+    /// <summary>
+    /// Initializes the component and loads the initial data.
+    /// </summary>
+    
+    protected override async Task OnInitializedAsync()
+    {
+        API = configuration.GetSection("APIURI").Get<string>()!;
+        await GetData("");
+    }
+
+    /// <summary>
+    /// Handles the search input change event and fetches the filtered data.
+    /// </summary>
+    /// <param name="e">Change event arguments.</param>
+    private async Task SearchChanged(ChangeEventArgs e)
+    {
+        currentPage = 1;
+        await GetData(e.Value.ToString());
+    }
+
+    /// <summary>
+    /// Fetches the warehouse data based on the search string and current page.
+    /// </summary>
+    /// <param name="search">Search string.</param>
+    private async Task GetData(string search)
+    {
+        var requestContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Search", search),
+            new KeyValuePair<string, string>("PageSize", "10"),
+            new KeyValuePair<string, string>("PageNumber", currentPage.ToString())
+    });
+
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var response = await Http.PostAsync(API+"Warehouse/search", requestContent);
+        if (response.IsSuccessStatusCode)
+        {
+            WarehousesList = await response.Content.ReadFromJsonAsync<Warehouses>();
+            totalPages = (int)Math.Ceiling((double)WarehousesList.data.totalRows / 10);
+            StateHasChanged();
+        }
+    }
+
+    /// <summary>
+    /// Deletes a warehouse by its ID.
+    /// </summary>
+    /// <param name="id">Warehouse ID.</param>
+    private async Task DeleteWarehouse(int id)
+    {
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var response = await Http.DeleteAsync(API + $"Warehouse/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await GetData("");
+        }
+    }
+
+    /// <summary>
+    /// Displays the popup for inserting a new warehouse.
+    /// </summary>
+    private void ShowInsertPopup()
+    {
+        showInsertPopup = true;
+    }
+
+    /// <summary>
+    /// Inserts a new warehouse into the system.
+    /// </summary>
+    private async Task InsertWarehouse()
+    {
+        var token = await localStorage.GetItemAsync<LoginRoot>("user");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+        var requestContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Name", newWarehouse.name),
+            new KeyValuePair<string, string>("Address", newWarehouse.address),
+            new KeyValuePair<string, string>("City", newWarehouse.city),
+            new KeyValuePair<string, string>("CountryId", newWarehouse.countryId.ToString())
+    });
+
+        var response = await Http.PostAsync(API + "Warehouse", requestContent);
+        if (response.IsSuccessStatusCode)
+        {
+            newWarehouse = new Warehouse(); // Clear the new warehouse object
+            showInsertPopup = false; // Close the popup
+            await GetData(""); // Refresh data after insertion
+        }
+    }
+
+    /// <summary>
+    /// Navigates to the previous page and fetches the data.
+    /// </summary>
+    private async void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            await GetData("");
+        }
+    }
+
+    /// <summary>
+    /// Navigates to the next page and fetches the data.
+    /// </summary>
+    private async void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            await GetData("");
+        }
+    }
+
+    /// <summary>
+    /// Indicates if there is a previous page available.
+    /// </summary>
+    private bool HasPreviousPage => currentPage > 1;
+
+    /// <summary>
+    /// Indicates if there is a next page available.
+    /// </summary>
+    private bool HasNextPage => currentPage < totalPages;
+
+    // Model classes for Warehouse, Data, Rows, and Warehouses
+
+    public class Warehouse
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public int countryId { get; set; }
+        public string countryName { get; set; }
+        public long warehouseItemsCount { get; set; }
+    }
+
+    public class Data
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public int countryId { get; set; }
+        public string countryName { get; set; }
+        public long warehouseItemsCount { get; set; }
+    }
+
+    public class Rows
+    {
+        public IList<Data> data { get; set; }
+        public int totalRows { get; set; }
+    }
+
+    public class Warehouses
+    {
+        public int errorCode { get; set; }
+        public string errorMessage { get; set; }
+        public bool success { get; set; }
+        public Rows data { get; set; }
+    }
+}
