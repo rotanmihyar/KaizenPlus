@@ -12,6 +12,11 @@ using kaizenplus.DataAccess;
 using kaizenplus.Extensions;
 using kaizenplus.Middlewares;
 using Serilog;
+using Serilog.Ui.MsSqlServerProvider;
+using Serilog.Sinks.MSSqlServer;
+using Serilog.Ui.Web;
+using Serilog.Core;
+using Microsoft.Extensions.Logging;
 
 namespace kaizenplus
 {
@@ -36,11 +41,11 @@ namespace kaizenplus
 
             services.AddAuthorization(Configuration);
 
-          //  services.AddAutoMapper(typeof(ConfigurationMappingProfile));
+            //  services.AddAutoMapper(typeof(ConfigurationMappingProfile));
 
             services.AddAppServices();
 
-          //  services.AddAutoMapper(typeof(LookupMapping));
+            //  services.AddAutoMapper(typeof(LookupMapping));
 
             services.AddAppCors(Configuration);
 
@@ -50,8 +55,31 @@ namespace kaizenplus
             {
                 options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
             });
-        }
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddSeq(Configuration.GetSection("Seq"));
+            });
+            var levelSwitch = new LoggingLevelSwitch();
 
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.ControlledBy(levelSwitch)
+                .WriteTo.Seq("http://localhost:9999",
+                             apiKey: "yeEZyL3SMcxEKUijBjN",
+                             controlLevelSwitch: levelSwitch)
+                .CreateLogger();
+
+            Log.Information("Starting up");
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo
+                 .MSSqlServer(
+                    connectionString: Configuration.GetConnectionString("DatabaseConnection"),
+                    sinkOptions: new MSSqlServerSinkOptions { TableName = "LogEvents" })
+                    .CreateLogger();
+            services.AddSerilogUi(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection"), "LogEvents"));
+        
+        
+        }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -68,12 +96,12 @@ namespace kaizenplus
             app.UseAuthentication();
 
             app.UseAuthorization();
-
+            app.UseSerilogUi();
             app.UseSwagger();
 
 
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.File(@"../log.txt")
+                .WriteTo.File(@Configuration.GetValue<string>("LoggerPath"))
                 .CreateLogger();
 
            

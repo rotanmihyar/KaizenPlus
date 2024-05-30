@@ -1,24 +1,90 @@
-﻿@page "/logviewer"
+﻿@page "/LogViewer"
+@using System.Net.Http
+@using System.Net.Http.Json
+@using BlazorApplication.Models;
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@using Blazored.LocalStorage
+@using System.Net.Http.Headers;
+@inject ILocalStorageService localStorage
+@inject HttpClient Http
+@inject IConfiguration configuration
+@inject NavigationManager Navigation
+@attribute [Authorize]
+<PageTitle>Log Viewer</PageTitle>
 
 <h1>Log Viewer</h1>
 
-<div>
-    <pre>@LogContent</pre>
-</div>
+@if (logLines == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="log-container">
+        @foreach (var line in logLines)
+        {
+            <p>@line</p>
+        }
+    </div>
+}
 
 @code {
-    private string LogContent { get; set; }
+    private string[] logLines;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await LoadLogData();
+        await CheckUserRole();
+    }
+
+    private async Task LoadLogData()
+    {
+        var apiUrl = configuration.GetValue<string>("APIURI") + "file/logger";
         try
         {
-            var logFilePath = Path.Combine("wwwroot", "log.txt");
-            LogContent = File.ReadAllText("log.txt");
+            var token = await localStorage.GetItemAsync<LoginRoot>("user");
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.data.token);
+
+            var logText = await Http.GetStringAsync(apiUrl);
+            logLines = logText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
         }
         catch (Exception ex)
         {
-            LogContent = $"Error reading log file: {ex.Message}";
+            logLines = new[] { $"Error: {ex.Message}" };
+        }
+    }
+    private bool IsAdmin;
+
+    private async Task CheckUserRole()
+    {
+        var userData = await localStorage.GetItemAsync<LoginRoot>("user");
+        if (userData != null)
+        {
+            IsAdmin = userData.data.roles.Any(r => r.name == "Admin");
+        }
+        else
+        {
+            IsAdmin = false;
+        }
+        if (IsAdmin==false)
+        {
+            
+          Navigation.NavigateTo("Login", true);
         }
     }
 }
+
+<style>
+    .log-container {
+        max-height: 500px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+        .log-container p {
+            margin: 0;
+        }
+</style>

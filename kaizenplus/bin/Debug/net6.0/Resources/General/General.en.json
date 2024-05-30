@@ -1,0 +1,12 @@
+{
+  "Success": "",
+  "UserNotFound": "User not found",
+  "InvalidPassword": "Invalid username or password",
+  "InvalidVerificationCode": "Invalid verification code",
+  "Unauthorized": "Please log in",
+  "UsernameTaken": "Username is taken",
+  "VerficationTitle": "Verification Code",
+  "UserInactive": "User inactive",
+  "NotFound": "Not found",
+  "UserNotVerified": "User not verified"
+}

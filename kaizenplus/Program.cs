@@ -9,6 +9,7 @@ namespace kaizenplus
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -21,5 +22,6 @@ namespace kaizenplus
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

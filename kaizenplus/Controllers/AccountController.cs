@@ -20,7 +20,7 @@ namespace Coachyou.Controllers
         {
             this.service = service;
         }
-
+        [AppAuthorize]
         [ValidateModel]
         [HttpPost("register")]
         [Produces(typeof(BaseResponse<Guid>))]
