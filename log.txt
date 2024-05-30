@@ -1377,3 +1377,14 @@ ORDER BY "u"."Id", "t"."UserId", "t"."RoleId"
 2024-05-30 15:22:15.338 +03:00 [INF] Executed action Coachyou.Controllers.AccountController.GetUsers (kaizenplus) in 2.356ms
 2024-05-30 15:22:15.338 +03:00 [INF] Executed endpoint 'Coachyou.Controllers.AccountController.GetUsers (kaizenplus)'
 2024-05-30 15:22:15.338 +03:00 [INF] HTTP GET /api/Account/GetUsers responded 200 in 2.5801 ms
+2024-05-30 15:29:40.323 +03:00 [INF] Entity Framework Core 6.0.0 initialized 'DatabaseService' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.0' with options: None
+2024-05-30 15:29:40.426 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-05-30 15:29:40.436 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-05-30 15:29:40.447 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-05-30 15:29:40.467 +03:00 [INF] No migrations were applied. The database is already up to date.
+2024-05-30 15:29:41.195 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 264.5059 ms
