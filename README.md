@@ -66,7 +66,9 @@ Provide instructions or examples for using your project.
 ![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/38554a8f-5197-419b-b27c-6512cc81ce45)
 
 ### User Page
-![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/0819e3ea-cde8-4520-a440-5b2fa67ce000)
+![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/fc111f22-eb0b-4d10-9e65-0f8019472fb3)
+![image](https://github.com/rotanmihyar/KaizenPlus/assets/6196183/fc111f22-eb0b-4d10-9e65-0f8019472fb3)
+
 
 
 
