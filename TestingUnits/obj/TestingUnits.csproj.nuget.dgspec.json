@@ -103,9 +103,33 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "Seq.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[6.6.1, )"
+            },
+            "Serilog.Sinks.MSSqlServerCore": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Serilog.Sinks.Seq": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Serilog.UI": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "Serilog.Ui.MsSqlServerProvider": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -202,6 +226,10 @@
             "NPOI": {
               "target": "Package",
               "version": "[2.7.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             },
             "coverlet.collector": {
               "target": "Package",
