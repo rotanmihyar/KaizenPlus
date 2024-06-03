@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using kaizenplus.Services.Users.Models;
 using kaizenplus.Services.UserService;
-using kaizenplus.Services.Users.Models;
 using kaizenplus.DataAccess.UnitOfWorks;
 using kaizenplus.Domain.UserRoles;
 using kaizenplus.Domain.Users;
