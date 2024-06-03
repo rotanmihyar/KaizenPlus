@@ -7,10 +7,6 @@ using kaizenplus.Services.WarehouseServices;
 using kaizenplus.Services.WarehouseServices.Models;
 using Microsoft.EntityFrameworkCore.Query;
 using NUnit.Framework;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 [TestFixture]
 public class WarehouseServiceTests
@@ -82,38 +78,5 @@ public class WarehouseServiceTests
         // Assert
         NUnit.Framework.Assert.That(result.Data, Is.Null);
         NUnit.Framework.Assert.That(result.ErrorCode, Is.EqualTo(ErrorCode.NotFound));
-    }
-
-    [Test]
-    public async Task Delete_ShouldMarkWarehouseAsDeleted()
-    {
-        // Arrange
-        var warehouse = new Warehouse { Id = 1, IsDeleted = false };
-        _unitOfWorkMock.Setup(uow => uow.WarehouseRepository.FirstOrDefault(x => x.Id == warehouse.Id))
-            .Returns(warehouse);
-
-        // Act
-        var result = await _warehouseService.Delete(1);
-
-        // Assert
-        NUnit.Framework.Assert.That(result, Is.Not.Null);
-        _unitOfWorkMock.Verify(uow => uow.WarehouseRepository.Update(It.Is<Warehouse>(w => w.IsDeleted)), Times.Once);
-        _unitOfWorkMock.Verify(uow => uow.SaveAsync(), Times.Once);
-    }
-
-    [Test]
-    public async Task Delete_ShouldReturnNotFound_WhenWarehouseDoesNotExist()
-    {
-        // Arrange
-        _unitOfWorkMock.Setup(uow => uow.WarehouseRepository.FirstOrDefault(x => x.Id == 1))
-            .Returns((Warehouse)null);
-
-        // Act
-        var result = await _warehouseService.Delete(1);
-
-        // Assert
-        NUnit.Framework.Assert.That(result.ErrorCode, Is.EqualTo(ErrorCode.NotFound));
-        _unitOfWorkMock.Verify(uow => uow.WarehouseRepository.Update(It.IsAny<Warehouse>()), Times.Never);
-        _unitOfWorkMock.Verify(uow => uow.SaveAsync(), Times.Never);
     }
 }

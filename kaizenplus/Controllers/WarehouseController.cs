@@ -31,12 +31,12 @@ namespace kaizenplus.Controllers
         [AppAuthorize(Roles = new[] { Roles.Admin, Roles.Auditor, Roles.Management })]
         public BaseResponse<WarehouseOutput> Get(long id)
         {
-            return  service.Get(id);
+            return service.Get(id);
         }
         [ValidateModel]
         [HttpPost("search")]
         [AppAuthorize(Roles = new[] { Roles.Admin, Roles.Auditor, Roles.Management })]
-        public BaseResponse<PageOutput<WarehouseOutput>> Get([FromForm]WarehouseSearch input)
+        public BaseResponse<PageOutput<WarehouseOutput>> Get([FromForm] WarehouseSearch input)
         {
             return service.Get(input);
         }

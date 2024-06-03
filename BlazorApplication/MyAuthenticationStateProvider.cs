@@ -1,10 +1,7 @@
-﻿using Blazored.LocalStorage;
+﻿using BlazorApplication.Models;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using BlazorApplication.Models;
-using Newtonsoft.Json.Linq;
 
 public class MyAuthenticationStateProvider : AuthenticationStateProvider
 {
@@ -52,7 +49,7 @@ public class MyAuthenticationStateProvider : AuthenticationStateProvider
         var userlc = await GetUserFromLocalStorage();
         var claims = new[]
     {
-            new Claim(ClaimTypes.Authentication, userlc.data.token),         
+            new Claim(ClaimTypes.Authentication, userlc.data.token),
     };
 
         var identity = new ClaimsIdentity(claims, "jwt");

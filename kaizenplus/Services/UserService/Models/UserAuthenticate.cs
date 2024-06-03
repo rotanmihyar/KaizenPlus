@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 using kaizenplus.Enums;
-using Coachyou.Services.Users.Models;
+using kaizenplus.Services.Users.Models;
 using kaizenplus.Domain.Users;
 using kaizenplus.Security.Token.Models;
 

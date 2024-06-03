@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using kaizenplus.Files;
 using kaizenplus.Models;
-using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using kaizenplus.Attributes;
 using kaizenplus.Enums;
@@ -28,11 +27,11 @@ namespace kaizenplus.Controllers
             using (StreamReader rr = new StreamReader(fs))
             {
                 return new BaseResponse<string>(rr.ReadToEnd());
-            } 
+            }
             //return new BaseResponse<string>("");
 
         }
-    [HttpGet("{name}")]
+        [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
             var content = new MemoryStream(fileManager.Get(name));

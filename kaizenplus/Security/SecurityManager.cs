@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using kaizenplus.Enums;
-using kaizenplus.Models;
 
 namespace kaizenplus.Security
 {
@@ -23,36 +22,6 @@ namespace kaizenplus.Security
 
             return new Guid(userIdClaim.Value);
         }
-
-        public int? GetBusinessId()
-        {
-            var claim = httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "businessId");
-
-            var parsing = int.TryParse(claim.Value, out int businessId);
-
-            if (parsing)
-            {
-                return businessId;
-            }
-
-            return null;
-        }
-
-        public int? GetCompanyId()
-        {
-            var claim = httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "companyId");
-
-            var parsing = int.TryParse(claim.Value, out int companyId);
-
-            if (parsing)
-            {
-                return companyId;
-            }
-
-            return null;
-        }
-
-
         public List<string> GetUserRoles()
         {
             var roles = httpContextAccessor.HttpContext.User.Claims.Where(c => c.Type == ClaimTypes.Role);

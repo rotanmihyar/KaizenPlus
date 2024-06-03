@@ -9,11 +9,6 @@ namespace kaizenplus.Security
     public interface ISecurityManager
     {
         Guid GetUserId();
-
-        int? GetCompanyId();
-
-        int? GetBusinessId();
-
         List<string> GetUserRoles();
 
         bool HasRole(params Roles[] roles);

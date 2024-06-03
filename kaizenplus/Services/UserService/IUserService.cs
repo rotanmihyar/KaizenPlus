@@ -1,5 +1,5 @@
 ﻿using kaizenplus.Services.Users.Models;
-using Coachyou.Services.Users.Models;
+using kaizenplus.Services.Users.Models;
 using kaizenplus.Models;
 using System;
 using System.Collections.Generic;

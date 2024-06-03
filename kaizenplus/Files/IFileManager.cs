@@ -17,7 +17,5 @@ namespace kaizenplus.Files
         byte[] Get(string name);
 
         bool Exists(string name);
-
-        string GetBase64Extension(string data);
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 using kaizenplus.Enums;
 
-namespace Coachyou.Services.Users.Models
+namespace kaizenplus.Services.Users.Models
 {
     public class UserCreateInput
     {

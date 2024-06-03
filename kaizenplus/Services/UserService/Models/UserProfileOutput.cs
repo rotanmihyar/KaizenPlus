@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 using kaizenplus.Enums;
-using Coachyou.Services.Users.Models;
+using kaizenplus.Services.Users.Models;
 using kaizenplus.Domain.Users;
 using kaizenplus.Models;
 using kaizenplus.Security.Token.Models;
 
 
-namespace Coachyou.Services.Users.Models
+namespace kaizenplus.Services.Users.Models
 {
     public class UserProfileOutput
     {

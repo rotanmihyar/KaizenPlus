@@ -51,7 +51,8 @@ namespace kaizenplus.Services.WarehouseServices
         }
         public BaseResponse<WarehouseOutput> Get(long Id)
         {
-            var data = unitOfWork.WarehouseRepository.FirstOrDefault(x => x.Id == Id && x.IsDeleted == false, query => {
+            var data = unitOfWork.WarehouseRepository.FirstOrDefault(x => x.Id == Id && x.IsDeleted == false, query =>
+            {
                 return query.Include(x => x.Country).Include(x => x.WarehouseItem);
             });
             if (data == null)
@@ -67,18 +68,17 @@ namespace kaizenplus.Services.WarehouseServices
                 search.Search = "";
             int skip = search.PageSize == 0 ? search.PageNumber : search.PageNumber * search.PageSize;
             var data = unitOfWork.WarehouseRepository.Where(x => x.IsDeleted == false &&
-            (x.Name.Contains(search.Search) 
+            (x.Name.Contains(search.Search)
             || x.Address.Contains(search.Search)
             || x.City.Contains(search.Search))
-            , query => {
+            , query =>
+            {
                 return query.Include(x => x.Country).Include(x => x.WarehouseItem);
-            }).OrderByDescending(x=>x.WarehouseItem.Count());
+            }).OrderByDescending(x => x.WarehouseItem.Count());
             if (data == null)
                 return new BaseResponse<PageOutput<WarehouseOutput>>(null, ErrorCode.NotFound);
 
             return new BaseResponse<PageOutput<WarehouseOutput>>(new PageOutput<WarehouseOutput>(data.Select(x => new WarehouseOutput(x)).Skip(skip).Take(take).ToList(), data.Count()));
         }
     }
-
 }
-

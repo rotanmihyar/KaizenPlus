@@ -1,10 +1,8 @@
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using BlazorApplication;
 using Blazored.LocalStorage;
-using System;
-using System.Net.Http;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

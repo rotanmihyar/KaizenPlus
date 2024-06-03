@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using kaizenplus.Services.Users.Models;
 using kaizenplus.Services.UserService;
-using Coachyou.Services.Users.Models;
+using kaizenplus.Services.Users.Models;
 using kaizenplus.Attributes;
 using kaizenplus.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Coachyou.Controllers
+namespace kaizenplus.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -29,8 +29,8 @@ namespace Coachyou.Controllers
             return Ok(await service.Register(input));
         }
 
-   
- 
+
+
         [AppAuthorize]
         [ValidateModel]
         [HttpPost("newPassword")]
@@ -44,7 +44,7 @@ namespace Coachyou.Controllers
         [ValidateModel]
         [HttpDelete("Delete/{Id}")]
         [Produces(typeof(BaseResponse))]
-        public async Task<ActionResult<BaseResponse>> DeleteUser( Guid Id)
+        public async Task<ActionResult<BaseResponse>> DeleteUser(Guid Id)
         {
             return Ok(await service.DeleteUser(Id));
         }
@@ -54,7 +54,7 @@ namespace Coachyou.Controllers
         [Produces(typeof(BaseResponse<List<UserOutput>>))]
         public ActionResult<BaseResponse<List<UserOutput>>> GetUsers()
         {
-            return Ok( service.GetUsers());
+            return Ok(service.GetUsers());
         }
 
         [ValidateModel]
@@ -72,11 +72,6 @@ namespace Coachyou.Controllers
         {
             return Ok(await service.RefreshToken(input));
         }
-
-
-     
-
-      
 
     }
 }

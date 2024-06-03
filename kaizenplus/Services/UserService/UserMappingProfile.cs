@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using kaizenplus.Services.Users.Models;
-using Coachyou.Services.Users.Models;
+using kaizenplus.Services.Users.Models;
 using kaizenplus.Domain.Users;
 using System;
 using System.Collections.Generic;

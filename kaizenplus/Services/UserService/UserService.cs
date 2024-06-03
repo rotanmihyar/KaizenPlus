@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using kaizenplus.Services.Users.Models;
 using kaizenplus.Services.UserService;
-using Coachyou.Services.Users.Models;
+using kaizenplus.Services.Users.Models;
 using kaizenplus.DataAccess.UnitOfWorks;
 using kaizenplus.Domain.UserRoles;
 using kaizenplus.Domain.Users;
@@ -22,33 +22,33 @@ namespace kaizenplus.Services.Users
     public class UserService : IUserService
     {
         private readonly IUnitOfWork unitOfWork;
-       
+
         private readonly ISecurityManager securityManager;
         private readonly ITokenGenerator tokenGenerator;
         private readonly IFileManager fileManager;
 
         public UserService(
             IUnitOfWork unitOfWork,
-            
+
             ISecurityManager securityManager,
             ITokenGenerator tokenGenerator,
             IFileManager fileManager
-        
+
          )
         {
             this.unitOfWork = unitOfWork;
-            
+
             this.securityManager = securityManager;
             this.tokenGenerator = tokenGenerator;
             this.fileManager = fileManager;
-        
+
         }
 
-     
 
-        
 
-    
+
+
+
 
         public async Task<BaseResponse<Guid>> Register(UserRegisterInput input)
         {
@@ -56,7 +56,7 @@ namespace kaizenplus.Services.Users
             {
                 var user = unitOfWork.UserRepository.FirstOrDefault(u => u.Email == input.Email);
 
-               
+
 
                 if (user == null)
                 {
@@ -72,12 +72,12 @@ namespace kaizenplus.Services.Users
                         DateOfBirth = input.BirthDate,
                         FirstName = input.FirstName,
                         LastName = input.LastName,
-                       
+
                         Active = true,
-                        IsVerified=true,
-                       
-                       
-                        
+                        IsVerified = true,
+
+
+
                         UserRoles = new List<UserRole>
                     {
                         new UserRole
@@ -111,7 +111,7 @@ namespace kaizenplus.Services.Users
                     user.DateOfBirth = input.BirthDate;
                     user.FirstName = input.FirstName;
                     user.LastName = input.LastName;
-                   
+
                 }
                 if (input.PhoneNumber != null)
                 {
@@ -123,10 +123,10 @@ namespace kaizenplus.Services.Users
                 }
                 CreatePasswordHash(input.Password, user);
 
-               
+
 
                 await unitOfWork.SaveAsync();
-       
+
                 return new BaseResponse<Guid>(user.Id);
             }
             catch (Exception ex) { return new BaseResponse<Guid>(Guid.NewGuid(), ErrorCode.BadRequest, ex.Message); }
@@ -138,7 +138,7 @@ namespace kaizenplus.Services.Users
         {
             var userId = securityManager.GetUserId();
 
-            var user = unitOfWork.UserRepository.FirstOrDefault(u => u.Id != userId && u.Id==Id);
+            var user = unitOfWork.UserRepository.FirstOrDefault(u => u.Id != userId && u.Id == Id);
 
             if (user == null)
             {
@@ -154,7 +154,7 @@ namespace kaizenplus.Services.Users
         {
             var userId = securityManager.GetUserId();
 
-            var user = unitOfWork.UserRepository.Where(u => u.Id != userId && u.Active == true).Include(x => x.UserRoles).ThenInclude(x=>x.Role);
+            var user = unitOfWork.UserRepository.Where(u => u.Id != userId && u.Active == true).Include(x => x.UserRoles).ThenInclude(x => x.Role);
 
             return new BaseResponse<List<UserOutput>>(user.Select(x => new UserOutput(x)).ToList());
 
@@ -171,7 +171,7 @@ namespace kaizenplus.Services.Users
             }
 
             CreatePasswordHash(input.Password, user);
-            
+
             await unitOfWork.SaveAsync();
 
             return new BaseResponse();
@@ -188,31 +188,31 @@ namespace kaizenplus.Services.Users
             if (!VerifyPasswordHash(input.Password, user.PasswordHash, user.PasswordSalt))
                 return new BaseResponse<UserAuthenticateOutput>(null, ErrorCode.InvalidPassword);
 
-            
+
             unitOfWork.UserRepository.Update(user);
             await unitOfWork.SaveAsync();
             return await AuthenticateUser(user);
         }
         private async Task<BaseResponse<UserAuthenticateOutput>> AuthenticateUser(User user)
         {
-          
+
 
             if (!user.Active)
             {
                 return new BaseResponse<UserAuthenticateOutput>(null, ErrorCode.UserInactive);
             }
 
-           
+
             var output = new UserAuthenticateOutput(user)
             {
                 Token = tokenGenerator.Generate(new GenerateTokenInput
                 {
                     Id = user.Id,
-                    Name = user.FirstName+user.LastName,
-                  
+                    Name = user.FirstName + user.LastName,
+
                     Roles = user.UserRoles.Select(userRole => userRole.Role.Name).ToList()
                 }),
-                
+
                 RefreshToken = tokenGenerator.GenerateRefreshToken()
             };
 
@@ -262,9 +262,9 @@ namespace kaizenplus.Services.Users
                 DateOfBirth = input.DateOfBirth,
                 FirstName = input.FirstName,
                 LastName = input.LastName,
-               
+
                 Active = true,
-               
+
                 UserRoles = new List<UserRole>
                     {
                         new UserRole
@@ -309,9 +309,9 @@ namespace kaizenplus.Services.Users
             return new BaseResponse<UserOutput>(new UserOutput(user));
         }
 
-      
 
-        
+
+
         private User GetUser(Guid id)
         {
             var user = unitOfWork.UserRepository.FirstOrDefault(c => c.Id == id);
@@ -335,8 +335,6 @@ namespace kaizenplus.Services.Users
 
             return user;
         }
-
-
 
         private void CreatePasswordHash(string password, User user)
         {
@@ -363,10 +361,6 @@ namespace kaizenplus.Services.Users
 
             return true;
         }
-
-      
-
-     
 
     }
 }
