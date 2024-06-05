@@ -1,7 +1,3 @@
-D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.GeneratedMSBuildEditorConfig.editorconfig
-D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.AssemblyInfoInputs.cache
-D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.AssemblyInfo.cs
-D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.csproj.CoreCompileInputs.cache
 D:\kaizenplus\backend\BlazorApplication\bin\Debug\net6.0\wwwroot\_framework\blazor.boot.json
 D:\kaizenplus\backend\BlazorApplication\bin\Debug\net6.0\wwwroot\_framework\blazor.webassembly.js
 D:\kaizenplus\backend\BlazorApplication\bin\Debug\net6.0\wwwroot\_framework\BlazorApplication.dll
@@ -655,6 +651,10 @@ D:\kaizenplus\backend\BlazorApplication\bin\Debug\net6.0\icudt_CJK.dat
 D:\kaizenplus\backend\BlazorApplication\bin\Debug\net6.0\icudt_EFIGS.dat
 D:\kaizenplus\backend\BlazorApplication\bin\Debug\net6.0\icudt_no_CJK.dat
 D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.csproj.AssemblyReference.cache
+D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.GeneratedMSBuildEditorConfig.editorconfig
+D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.AssemblyInfoInputs.cache
+D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.AssemblyInfo.cs
+D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\BlazorApplication.csproj.CoreCompileInputs.cache
 D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\build-gz\SjM8qsrp.gz
 D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\build-gz\bThVF4N+.gz
 D:\kaizenplus\backend\BlazorApplication\obj\Debug\net6.0\build-gz\CC2+LPg1.gz

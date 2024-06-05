@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2WvJuPdCwAS//3SKK39VolMOLKO9xMTcq4wBycDSt5uV79lOmpAlmg7fIstQjPYiFUqQvUbn9tcTKIVc0cqX0A==",
+  "dgSpecHash": "ENWHtt7CCI7/cDSgoB+LWh4eLxkm1RmmxAX0kejPNUZAhzbxjtbTntu9haSzH8umRhug3LlODG9hCB55tYzhGw==",
   "success": true,
   "projectFilePath": "D:\\kaizenplus\\backend\\TestingUnits\\TestingUnits.csproj",
   "expectedPackageFiles": [
@@ -82,6 +82,7 @@
     "C:\\Users\\rmihy\\.nuget\\packages\\npoi\\2.7.0\\npoi.2.7.0.nupkg.sha512",
     "C:\\Users\\rmihy\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
     "C:\\Users\\rmihy\\.nuget\\packages\\nunit\\4.1.0\\nunit.4.1.0.nupkg.sha512",
+    "C:\\Users\\rmihy\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
     "C:\\Users\\rmihy\\.nuget\\packages\\polly\\8.4.0\\polly.8.4.0.nupkg.sha512",
     "C:\\Users\\rmihy\\.nuget\\packages\\polly.core\\8.4.0\\polly.core.8.4.0.nupkg.sha512",
     "C:\\Users\\rmihy\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

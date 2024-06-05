@@ -11,6 +11,7 @@ using kaizenplus.Domain.WarehouseItems;
 
 namespace kaizenplus.DataAccess
 {
+
     public class DatabaseService : DbContext
     {
         public DbSet<WarehouseItem> WarehouseItem { get; set; }
@@ -23,11 +24,10 @@ namespace kaizenplus.DataAccess
         {
             get; set;
         }
-
-
-
+        
         public DatabaseService(DbContextOptions<DatabaseService> options) : base(options)
         {
+
         }
 
         /// <summary>
@@ -53,5 +53,6 @@ namespace kaizenplus.DataAccess
 
             base.OnModelCreating(builder);
         }
+
     }
 }

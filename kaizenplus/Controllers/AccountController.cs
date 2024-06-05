@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using kaizenplus.Services.Users.Models;
 using kaizenplus.Services.UserService;
-using kaizenplus.Services.Users.Models;
 using kaizenplus.Attributes;
 using kaizenplus.Models;
 using Microsoft.AspNetCore.Mvc;

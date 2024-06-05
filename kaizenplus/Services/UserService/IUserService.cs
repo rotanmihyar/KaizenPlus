@@ -1,9 +1,7 @@
 ﻿using kaizenplus.Services.Users.Models;
-using kaizenplus.Services.Users.Models;
 using kaizenplus.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace kaizenplus.Services.UserService

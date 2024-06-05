@@ -247,3 +247,9 @@ D:\kaizenplus\backend\TestingUnits\obj\Release\net6.0\TestingUnits.genruntimecon
 D:\kaizenplus\backend\TestingUnits\obj\Release\net6.0\ref\TestingUnits.dll
 D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\nunit.framework.dll
 D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\nunit.framework.legacy.dll
+D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\NUnit3.TestAdapter.dll
+D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\NUnit3.TestAdapter.pdb
+D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\nunit.engine.dll
+D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\nunit.engine.api.dll
+D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\nunit.engine.core.dll
+D:\kaizenplus\backend\TestingUnits\bin\Release\net6.0\testcentric.engine.metadata.dll

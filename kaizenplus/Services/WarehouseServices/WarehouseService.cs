@@ -77,7 +77,7 @@ namespace kaizenplus.Services.WarehouseServices
             }).OrderByDescending(x => x.WarehouseItem.Count());
             if (data == null)
                 return new BaseResponse<PageOutput<WarehouseOutput>>(null, ErrorCode.NotFound);
-
+            var test = data.ToList();
             return new BaseResponse<PageOutput<WarehouseOutput>>(new PageOutput<WarehouseOutput>(data.Select(x => new WarehouseOutput(x)).Skip(skip).Take(take).ToList(), data.Count()));
         }
     }
